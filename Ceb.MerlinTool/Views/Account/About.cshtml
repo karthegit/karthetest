@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+<div id="aboutPage" class="padding-top-15 padding-bottom-15">
+    <h1 class="no-margin padding-bottom-15 "> About </h1>
+    <div class="pageContent">
+        @*<p id="info" class="hide strong"></p>*@
+
+        <p>
+            Gartner Procurement clients estimate that 60% of their procurement organizations’ supplier-focused time is spent on strategic sourcing activities. However, less than 20% of procurement organizations’ time is spent actively managing supplier value. Consequently, it has been reported that 75% of sourcing savings can be lost in the first 18 months due to lack of compliance with contract terms and conditions. Only by engaging in supplier management activities using well developed tools, such as scorecards, can organizations maintain strategic sourcing value and improve upon it.
+        </p>
+
+        <p>
+            Merlin is an automated supplier scorecard platform that allows you to easily collect, aggregate, and analyze performance data for your most critical suppliers. The purpose of these reports is to provide you with information on your supplier’s performance to help sustain the value from the strategic sourcing process and helping identify areas for continuous improvement activities. Combining best-in-class KPIs with our automated platform, Merlin ensures that you minimize time on manual data aggregation and maximize time on more strategic activities.
+        </p>
+        <div class="padding-top-10 padding-bottom-10"><a id="getStartContainer" href="~/Home/Overall">Get Started Here <i class="glyphicon glyphicon-play" aria-hidden="true"></i></a></div>
+    </div>
+
+</div>
+
+<script>
+    $("#page-spinner").show();
+
+    // $("#info").text('');
+    // $("#info").addClass('hide').removeClass('show');
+    if (localStorage.getItem("nodata") == null) {
+        $.ajax({
+            url: config_data.WEBAPI_URL + "/api/v1/APIAdmin/CheckifCompanySurvey?companyId=" + '@Session["CEBId"]',
+            type: 'Get',
+            success: function (response) {
+                $("#page-spinner").hide();
+                if (response.Status == 1) {
+                    //  $("#info").text(response.Message);
+                    // $("#info").addClass('show').removeClass('hide');
+                    informationAlert(response.Message);
+                    localStorage.setItem("nodata", true);
+                    //  $(".filterDataSections .section .sectionTitle").addClass("disabled")
+                }
+            },
+            error: function (data) {
+                failureAlert(data);
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+    }
+</script>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="CEB.CWS.Infra.WebService.Contracts" elementFormDefault="qualified" targetNamespace="CEB.CWS.Infra.WebService.Contracts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://sbws-dev.executiveboard.com/v2.0/WebServices/AuthenticationWebService.svc?xsd=xsd4" namespace="CEB.CWS.Infra.Contracts.Entities.Authenticate" />
+  <xs:import schemaLocation="http://sbws-dev.executiveboard.com/v2.0/WebServices/AuthenticationWebService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/CEB.CWS.Infra.Contracts.Entities.Authenticate" />
+  <xs:element name="Authenticate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="identitySystem" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AuthenticateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="CEB.CWS.Infra.Contracts.Entities.Authenticate" minOccurs="0" name="AuthenticateResult" nillable="true" type="q1:AuthenticationResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AuthenticateWebv2">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="CEB.CWS.Infra.Contracts.Entities.Authenticate" minOccurs="0" name="userCredentials" nillable="true" type="q2:UserCredentials" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AuthenticateWebv2Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="CEB.CWS.Infra.Contracts.Entities.Authenticate" minOccurs="0" name="AuthenticateWebv2Result" nillable="true" type="q3:AuthenticateResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Validate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="serviceName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="CEB.CWS.Infra.Contracts.Entities.Authenticate" minOccurs="0" name="ValidateResult" nillable="true" type="q4:ValidateResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Impersonate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="contactCrmId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="impersonatingUserEmail" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="programAcronym" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ImpersonateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/CEB.CWS.Infra.Contracts.Entities.Authenticate" minOccurs="0" name="ImpersonateResult" nillable="true" type="q5:ImpersonateResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AuthenticateToken">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="token" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AuthenticateTokenResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/CEB.CWS.Infra.Contracts.Entities.Authenticate" minOccurs="0" name="AuthenticateTokenResult" nillable="true" type="q6:AuthenticateTokenResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidateSecurityToken">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="securityToken" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="serviceName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="methodName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidateSecurityTokenResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="CEB.CWS.Infra.Contracts.Entities.Authenticate" minOccurs="0" name="ValidateSecurityTokenResult" nillable="true" type="q7:ValidateResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

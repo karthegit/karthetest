@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="fdb81b77-c31f-499e-8934-3857e985ecc8" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://metrics-dev.cebglobal.com/SalesforceService/WebServices/SalesforceWebService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SalesforceWebService.xsd" MetadataType="Schema" ID="62b65312-bf46-44dd-ba86-9c1893736f1c" SourceId="1" SourceUrl="http://metrics-dev.cebglobal.com/SalesforceService/WebServices/SalesforceWebService.svc?xsd=xsd0" />
+    <MetadataFile FileName="SalesforceWebService.disco" MetadataType="Disco" ID="7d7ed7ff-6235-4c58-8146-f91895c14ada" SourceId="1" SourceUrl="http://metrics-dev.cebglobal.com/SalesforceService/WebServices/SalesforceWebService.svc?disco" />
+    <MetadataFile FileName="SalesforceWebService1.xsd" MetadataType="Schema" ID="c24637be-fe8e-448b-a3da-496eb53b7478" SourceId="1" SourceUrl="http://metrics-dev.cebglobal.com/SalesforceService/WebServices/SalesforceWebService.svc?xsd=xsd4" />
+    <MetadataFile FileName="SalesforceWebService2.xsd" MetadataType="Schema" ID="a2683836-8272-4d0a-81d7-000fc0c20840" SourceId="1" SourceUrl="http://metrics-dev.cebglobal.com/SalesforceService/WebServices/SalesforceWebService.svc?xsd=xsd3" />
+    <MetadataFile FileName="SalesforceWebService3.xsd" MetadataType="Schema" ID="a6b54106-c701-4a28-a0e1-43c23655fe36" SourceId="1" SourceUrl="http://metrics-dev.cebglobal.com/SalesforceService/WebServices/SalesforceWebService.svc?xsd=xsd1" />
+    <MetadataFile FileName="SalesforceWebService4.xsd" MetadataType="Schema" ID="b66b848c-e89f-4fe6-b592-9bebb813dd87" SourceId="1" SourceUrl="http://metrics-dev.cebglobal.com/SalesforceService/WebServices/SalesforceWebService.svc?xsd=xsd2" />
+    <MetadataFile FileName="SalesforceWebService.wsdl" MetadataType="Wsdl" ID="c8c8196b-5751-4250-a339-7721e50ac369" SourceId="1" SourceUrl="http://metrics-dev.cebglobal.com/SalesforceService/WebServices/SalesforceWebService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

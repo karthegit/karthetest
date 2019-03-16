@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/CEB.CWS.Infra.Contracts.Entities.Authenticate" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/CEB.CWS.Infra.Contracts.Entities.Authenticate" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="Header">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SecurityToken" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubjectName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Signature" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TrackId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Header" nillable="true" type="tns:Header" />
+  <xs:complexType name="ImpersonateResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="LoginToken" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WebsiteURL" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ImpersonateResponse" nillable="true" type="tns:ImpersonateResponse" />
+  <xs:complexType name="AuthenticateTokenResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ImpersonatingUsername" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LoginToken" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ResponseCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AuthenticateTokenResponse" nillable="true" type="tns:AuthenticateTokenResponse" />
+</xs:schema>

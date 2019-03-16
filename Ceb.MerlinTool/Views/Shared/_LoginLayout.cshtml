@@ -1,0 +1,177 @@
+﻿@using CEB.CustomControls.MvcControls;
+
+@{
+    ViewBag.Title = "Login";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Merlin Online Reporting Tool">
+    <title>Merlin Online Reporting Tool</title>
+    <script type="text/javascript">
+        function disableBackButton() {
+            window.history.forward();
+        }
+        setTimeout("disableBackButton()", 0);
+
+    </script>
+
+    <link href="~/images/favicon.ico" type="image/x-icon" rel="shortcut icon" />
+    <script src="~/Scripts/jquery.min.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    @*@Scripts.Render("~/bundles/scripts")
+    @Styles.Render("~/Content/css")*@
+    <style>
+        #sbws-login-view {
+            background-color: #f7f7f7;
+            padding: 20px 25px 30px;
+            margin: 0 auto 25px;
+            max-width: 360px;
+            -moz-border-radius: 2px;
+            -webkit-border-radius: 2px;
+            border-radius: 2px;
+            -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+            -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+            margin-top: 45px;
+            background: rgba(213, 213, 213, 0.5);
+        }
+
+            #sbws-login-view .header {
+                font-size: 26px;
+                color: #0A3F6B;
+                font-weight: bold;
+                text-align: center;
+            }
+
+            #sbws-login-view input {
+                width: 100%;
+                margin-top: 5px;
+                padding: 10px 12px;
+            }
+
+            #sbws-login-view #divLoginBox {
+                margin-top: -10px;
+            }
+
+            #sbws-login-view i {
+                font-size: 24px;
+                border-radius: 50px;
+                width: 50px;
+                height: 50px;
+                vertical-align: middle;
+                text-align: center;
+                padding-top: 11px;
+                background-color: #fff;
+                margin-top: -67px;
+                margin-left: 43%;
+                background-color: #00aeff;
+                color: #FFFFFF;
+                box-shadow: 0px 4px 6px rgba(161, 161, 161, 0.61);
+            }
+    </style>
+</head>
+<body>
+    <!-- Header Start -->
+    <div>
+        <nav class="navbar navbar-inverse navbar-static-top" role="navigation" id="header">
+            @*<div class="container-fluid ceb-container">*@
+            <div class="container-fluid">
+                <!-- Project Title -->
+                <div class="navbar-header inlineBlock">
+                    <div class="navbar-brand">
+                        <img src="~/images/gartner_logo_white.png" class="pull-left" /><div id="projectTitle" class="pull-left">
+                            <div id="mainTitle">
+                                <span>Merlin Online Reporting Tool<hr /> </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- Header End -->
+    <!-- Page Content Start -->
+    <div class="container-fluid ceb-container" id="page-content-wrapper">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row padding-top-15">                  
+                        @RenderBody()                     
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page Content End -->
+    <!-- Footer Start  -->
+    <div id="footer">
+        <div class="container-fluid ceb-container">
+            <div class="footerNote"><strong>Note:</strong>&nbsp;Since access to this tool is restricted to individuals designated by your procurement leader, if anyone leaves the company and access should be removed, please let us know by emailing <a class="footer-link" href="mailto:ProcurementDiagnosticsTeam@Gartner.com">ProcurementDiagnosticsTeam@Gartner.com </a></div>
+            <div id="copyrightLinks">
+                &copy; @DateTime.Now.Year Gartner, Inc. and/or its affiliates. All rights reserved.&nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="footer-link" href="https://www.gartner.com/technology/about/policies/terms_of_use.jsp" target="_blank">Terms of Service</a>
+                &nbsp;&#124;&nbsp;
+                <a class="footer-link" href="https://www.gartner.com/en/about/policies/privacy" target="_blank">Privacy Statement</a>
+                &nbsp;&#124;&nbsp;
+                <a class="footer-link" href="https://www.gartner.com/technology/about/policies/copyright.jsp" target="_blank">Copyright Inquiries</a>
+                &nbsp;&#124;&nbsp;
+                <a class="footer-link" href="https://www.gartner.com/technology/site-index.jsp" target="_blank">Site Map</a>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End  -->
+
+
+    <div class="spinner-container" id="page-spinner">
+        <div class="spinner-overlay"></div>
+        <div class="spinner"></div>
+    </div>
+
+
+    @*<div class="modal fade reset_modal" id="msgModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <p class="no-margin padding-top-15 padding-bottom-15" id="message">
+                        Download failed. Please try again later.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>*@
+    
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            localStorage.clear();
+            setPageHeightOnresize();           
+        });
+
+        var timeoutId;
+        window.onresize = function () {
+            window.clearTimeout(timeoutId);
+            //call the function after a 800 second
+            timeoutId = window.setTimeout(setPageHeightOnresize, 300);
+        }
+
+        function setPageHeightOnresize() {
+            var minHeightValue2 = jQuery(window).height() - jQuery("#header").outerHeight() - jQuery("#footer").outerHeight();
+            jQuery("#page-content-wrapper").css("min-height", minHeightValue2 + "px");
+        }
+            
+
+    </script>
+
+
+</body>
+</html>

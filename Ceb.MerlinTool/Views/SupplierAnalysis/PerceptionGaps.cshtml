@@ -1,0 +1,292 @@
+﻿@{
+    ViewBag.Title = "Perception Gaps";
+}
+
+<script src="~/Scripts/Merlin/serviceAPIPerceptionGaps.js?v=@System.Configuration.ConfigurationManager.AppSettings[" app_version"]"></script>
+
+<div id="PerceptionGaps" class="padding-top-15">
+    <div id="chipsContainer" class="padding-bottom-15">
+    </div>
+    <h1 class="no-margin padding-bottom-15 ">Perception Gap &nbsp;<span class="btn btn-primary printAll" onclick="dashboardprintAll('Perception Gap')">Print All</span></h1>
+    <div class="pageContent hide" id="admin-user">
+        Please <strong>@Html.ActionLink("click here", "MemberProfile", "Admin")</strong> to select the client you want to see the report
+    </div>
+    <div class="pageContent hide" id="no-survey-data">
+        No survey data exists. Please contact administrator
+    </div>
+    <div class="pageContent hide" id="no-pg-data">
+        No Perception Gap data found. Please update survey data or contact administrator
+    </div>
+    <div class="row" id="data-avail">
+        <div class="col-md-12 margin-bottom-20 hidden-print">
+            <div class="pageContent">
+                <div class="no-margin-bottom">
+                    <div class="row">
+                        <div class="col-sm-12  col-md-3">
+                            <label class="padding-bottom-5">Category</label><br />
+                            <select class="form-control" id="ddl-category"></select>
+                        </div>
+                        <div class="col-sm-12  col-md-3">
+                            <label class="padding-bottom-5">Supplier</label><br />
+                            <select class="form-control" id="ddl-supplier"></select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 margin-bottom-20 h3" id="selected_filter">
+            >> <span class="supplierName"></span><span class="subTitleCat"></span><span class="subTitleDemographic"></span>
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-sm-12 col-md-6 margin-bottom-20 myHalfColLeft">
+                    <div class="chartBody" id="perceptiongapOverallContainer">
+                        <div class="chartTitle">
+                            <span>Overall Supplier Score</span>                            
+                            <div class="dropdown pull-right exportBtn">
+                                <i class="fa fa-download pull-right chartIcon" data-toggle="dropdown">&nbsp;Download</i>
+                                <ul class="dropdown-menu" id="supplierOverallExport">
+                                    <li><a href="#" onclick="exportHighchart(this, 'pptx', 'perceptiongapOverallContainer')">Powerpoint<i class="fa fa-spinner fa-spin exportLoaderIcon pull-right hide"></i></a></li>
+                                    <li><a href="#" onclick="exportHighchart(this, 'pdf', 'perceptiongapOverallContainer')">PDF<i class="fa fa-spinner fa-spin exportLoaderIcon pull-right hide"></i></a></li>
+                                </ul>
+                            </div>
+                            <i id="supplierOverallPrint" class="fa fa-print pull-right chartIcon" aria-hidden="true" onclick="dashboardprint('perceptiongapOverallContainer','Perception Gap')">&nbsp;Print</i>
+                        </div>
+                        <div class="chartSubTitle" id="chartSubTitle">Average Rating</div>
+                        <div class="hchart height-300 width-100" id="perceptiongapOverallScore"></div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-6 margin-bottom-20 myHalfColRight">
+                    <div class="chartBody" id="supplierMetricContainer">
+                        <div class="chartTitle">
+                            <span>Supplier Metric Scores</span>
+                            <i class="fa fa fa-search-plus zoomIn pull-right chartIcon" id="metricZoom" onclick="zoom('metricPerceptionGap', true)">&nbsp;Zoom</i>
+                            <div class="dropdown pull-right exportBtn">
+                                <i class="fa fa-download pull-right chartIcon" data-toggle="dropdown">&nbsp;Download</i>
+                                <ul class="dropdown-menu" id="metricExport">
+                                    <li><a href="#" onclick="exportHighchart(this, 'pptx','supplierMetricContainer')">Powerpoint<i class="fa fa-spinner fa-spin exportLoaderIcon pull-right hide"></i></a></li>
+                                    <li><a href="#" onclick="exportHighchart(this, 'pdf','supplierMetricContainer')">PDF<i class="fa fa-spinner fa-spin exportLoaderIcon pull-right hide"></i></a></li>
+                                    <li><a href="#" onclick="exportHighchart(this, 'excel','supplierMetricContainer')">Excel<i class="fa fa-spinner fa-spin exportLoaderIcon pull-right hide"></i></a></li>
+                                </ul>
+                            </div>
+                            <i id="metricPrint" class="fa fa-print pull-right chartIcon" aria-hidden="true" onclick="dashboardprint('supplierMetricContainer', 'Perception Gap')">&nbsp;Print</i>
+                        </div>
+                        <div class="chartSubTitle" id="chartSubTitle">Average Rating</div>
+                        <div class="hchart height-300 width-100" id="metricPerceptionGap"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 margin-bottom-20">
+            <div class="chartBody" id="supplierKPIContainer">
+                <div class="chartTitle">
+                    <span>Supplier KPI Scores</span>
+
+                    <div class="dropdown pull-right exportBtn">
+                        <i class="fa fa-download pull-right chartIcon" data-toggle="dropdown">&nbsp;Download</i>
+                        <ul class="dropdown-menu" id="KPIExport">
+                            <li><a href="#" class="export-pdf" id="btnPdfKPIExport">PDF<i class="fa fa-spinner fa-spin exportLoaderIcon pull-right hide"></i></a></li>
+                            <li><a href="#" onclick="exportGridData(this, 'excel', 'supplierKPIContainer')">Excel<i class="fa fa-spinner fa-spin exportLoaderIcon pull-right hide"></i></a></li>
+                        </ul>
+                    </div>
+                    <i id="KPIPrint" class="fa fa-print pull-right chartIcon" aria-hidden="true" onclick="dashboardprint('supplierKPIContainer','Perception Gap')">&nbsp;Print</i>
+                    <i class="chartIcon expandCollapseIcon" onclick="expandCollapse('grid-supplier-scorebyKPI')" ><img src=" ~/Images/expand_collapse.png" /><div class="expandCollapseText">Collapse</div></i>
+                </div>
+
+                <div class="chartSubTitle" id="chartSubTitle">Average Rating</div>
+                <div class="table width-100 tableChart customKendoTabel margin-top-8" id="gridSupplierScoreByKPIKendoTabel">
+                    <div class="margin-7 no-margin-top" id="grid-supplier-scorebyKPI"></div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-12 margin-bottom-20">
+            <div class="chartBody" id="supplierCommentsContainer">
+                <div class="chartTitle">
+                    <span> Internal  comments</span>
+                    <div class="dropdown pull-right exportBtn">
+                        <i class="fa fa-download pull-right chartIcon" data-toggle="dropdown">&nbsp;Download</i>
+                        <ul class="dropdown-menu" id="supplierCommentsExport">
+                            <li><a href="#" class="export-pdf" id="btnPdfExport">PDF<i class="fa fa-spinner fa-spin exportLoaderIcon pull-right hide"></i></a></li>
+                            <li><a href="#" onclick="exportGridData(this, 'excel','supplierCommentsContainer')">Excel<i class="fa fa-spinner fa-spin exportLoaderIcon pull-right hide"></i></a></li>
+                        </ul>
+                    </div>
+                    <i id="supplierCommentsPrint" class="fa fa-print pull-right chartIcon" aria-hidden="true" onclick="dashboardprint('supplierCommentsContainer','Perception Gap')">&nbsp;Print</i>
+                    <i class="chartIcon expandCollapseIcon" onclick="expandCollapse('grid-supplier-comments')" ><img src=" ~/Images/expand_collapse.png" /><div class="expandCollapseText">Expand</div></i>
+                </div>
+                <div class="chartSubTitle"></div>
+                <div class="table width-100 tableChart customKendoTabel margin-top-8" id="gridSupplierKendoTabel">
+                    <div class="margin-7 margin-top-5" id="grid-supplier-comments"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    var companyId = ('@Session["isAdmin"]' == 'True' ? localStorage.getItem("selectedMember") : '@Session["CompanyId"]');
+    if (localStorage.getItem("breadcrumb") != null) {
+        var breadcrumb = JSON.parse(localStorage.getItem("breadcrumb"));
+        var element = ''; var removecurrentPage = false; var index = -1;
+        for (var i = 0; i < breadcrumb.length; i++) {
+            var textvar = '', value = '';
+            for (var k in breadcrumb[i]) {
+                textvar = k;
+                value = breadcrumb[i][k];
+            }
+            if (textvar == 'Perception Gap') {
+                removecurrentPage = true; index = i;
+            } else
+                element += '<div class="chips" id="chipsPerception" title="Click here to navigate to ' + textvar + ' page"><a href="' + value + '"> ' + textvar + ' </a></div>';
+        }
+        $("#chipsContainer").html(element);
+        if (removecurrentPage)
+            breadcrumb.splice(index, 1);
+        breadcrumb.push({ "Perception Gap": '@Url.Action("PerceptionGaps", "SupplierAnalysis")' });
+        localStorage.setItem("breadcrumb", JSON.stringify(breadcrumb));
+    }
+
+    $(document).ready(function () {
+        //check is admin and survey data availability
+        if (pageInit(companyId, '@Session["isAdmin"]') == true) {
+            $("#page-spinner").show();
+            checkifData(companyId, function (response) {
+                if (response.Status == 1) {
+                    $("#no-pg-data").addClass("hide").removeClass("show");
+                    $("#data-avail").addClass("show").removeClass("hide");
+                    $(".printAll").addClass("show").removeClass("hide");
+                    getLookup(companyId, 'Category', function () {
+                        if (localStorage.getItem("categoryId") !== null) {//localStorage.getItem("sc_categoryId") !== null
+                            loadfromLocalStorage();
+                        } else {
+                            var categoryId = $("#ddl-category").val();
+                            getSupplier(companyId, "0", categoryId, function () {
+                                getScore();
+                                var categorySel = $("#ddl-category option:selected").text();
+                                $("#selected_filter .subTitleCat").text(", Category: " + categorySel);
+                                $("#selected_filter .supplierName").text($("#ddl-supplier option:selected").text());
+                                $("#selectedSupplier").val($("#ddl-supplier").val());
+                            });
+                        }
+                    });
+                } else {
+                    $("#data-avail").addClass("hide").removeClass("show");
+                    $("#no-pg-data").addClass("show").removeClass("hide");
+                    $(".printAll").addClass("hide").removeClass("show");
+                }
+            });
+
+        }
+    });
+
+    function loadfromLocalStorage() {
+        var categoryId = localStorage.getItem("categoryId");//localStorage.getItem("sc_categoryId")        
+        $("#ddl-category").val(categoryId);
+        getSupplier(companyId, "0", categoryId, function () {
+            if (localStorage.getItem("sc_supplierId"))
+                $("#ddl-supplier").val(localStorage.getItem("sc_supplierId"));
+            getScore();
+            var categorySel = $("#ddl-category option:selected").text();
+            $("#selected_filter .subTitleCat").text(", Category: " + categorySel);
+            $("#selected_filter .supplierName").text($("#ddl-supplier option:selected").text());
+            $("#selectedSupplier").val($("#ddl-supplier").val());
+        });
+    }
+
+    $("#ddl-category").change(function () {
+        $("#page-spinner").show();
+        var selValue = this.value;
+        var selCate = $("#ddl-category option:selected").text();
+        $("#selected_filter .supplierName").text("");
+        $("#selectedSupplier").val('');
+        $("#selected_filter .subTitleDemographic").text("");
+        $("#selected_filter .subTitleCat").text(", Category: " + selCate);
+        //localStorage.setItem("sc_categoryId", selValue);
+        //localStorage.setItem("ca_categoryId", selValue);
+        localStorage.setItem("categoryId", selValue);
+        localStorage.removeItem("sc_supplierId");
+        localStorage.removeItem("ca_metricId");
+        localStorage.removeItem("ca_kpiId");
+
+        getSupplier(companyId, "0", $("#ddl-category").val(), function () {
+            $("#selected_filter .supplierName").text($("#ddl-supplier option:selected").text());
+            $("#selectedSupplier").val($("#ddl-supplier").val());
+            localStorage.setItem("sc_supplierId", $("#ddl-supplier").val());
+            isSortedAsc["supplierMetric"] = false;
+            getScore();
+        });//based on selected category
+    });
+
+    $("#ddl-supplier").change(function () {
+        var selValue = this.value;
+        var text = $("#ddl-supplier option:selected").text();
+        $("#selected_filter .supplierName").text(text);
+        //localStorage.setItem("sc_categoryId", $("#ddl-category").val());
+        //localStorage.setItem("ca_categoryId", $("#ddl-category").val());
+        localStorage.setItem("categoryId", $("#ddl-category").val());
+        localStorage.setItem("sc_supplierId", $("#ddl-supplier").val());
+        isSortedAsc["supplierMetric"] = false;
+        getScore();
+    });
+
+    function getScore() {
+        if ($("#ddl-category").val() == undefined || $("#ddl-supplier").val() == undefined) {
+            $("#page-spinner").hide();
+            failureAlert('Please select category and supplier to view the reports');
+            return;
+        }
+        getSupplierScore(companyId);
+        getSupplierScoreByMetric(companyId);
+        getSupplierScoreByKPI(companyId);
+        loadComments(companyId);
+    }
+
+    kendo.pdf.defineFont({
+        "DejaVu Sans": "https://kendo.cdn.telerik.com/2016.2.607/styles/fonts/DejaVu/DejaVuSans.ttf",
+        "DejaVu Sans|Bold": "https://kendo.cdn.telerik.com/2016.2.607/styles/fonts/DejaVu/DejaVuSans-Bold.ttf",
+        "DejaVu Sans|Bold|Italic": "https://kendo.cdn.telerik.com/2016.2.607/styles/fonts/DejaVu/DejaVuSans-Oblique.ttf",
+        "DejaVu Sans|Italic": "https://kendo.cdn.telerik.com/2016.2.607/styles/fonts/DejaVu/DejaVuSans-Oblique.ttf",
+        "WebComponentsIcons": "https://kendo.cdn.telerik.com/2017.1.223/styles/fonts/glyphs/WebComponentsIcons.ttf"
+    });
+
+    $("#btnPdfExport").kendoButton({
+        click: function () {
+            if (excelComments.length == 0)
+                failureAlert("No comments to export")
+            else {
+                processKendoForExport(function () {
+                    $("#btnPdfExport").find(".fa").removeClass("hide");
+                    $("#kendo-export-div").removeClass("hide");
+                    var setLeftvalue = $("#kendo-export-div").width() + $("#sideBarMain").width() + 100;
+                    $("#kendo-export-div").css("left", setLeftvalue + "px");
+                    $("#grid-supplier-comments").getKendoGrid().saveAsPDF().done(function () {
+                        $("#kendo-export-div").addClass("hide");
+                        $("#grid-supplier-comments .k-i-collapse").trigger("click")
+                        $("#btnPdfExport").find(".fa").addClass("hide");
+                    });
+                });
+            }
+        }
+    });
+
+    $("#btnPdfKPIExport").kendoButton({
+        click: function () {
+            processKPIKendoForExport(function () {
+                $("#btnPdfKPIExport").find(".fa").removeClass("hide");
+                $("#kendo-export-div").removeClass("hide");
+                var setLeftvalue = $("#kendo-export-div").width() + $("#sideBarMain").width() + 100;
+                $("#kendo-export-div").css("left", setLeftvalue + "px");
+                $("#grid-supplier-scorebyKPI").getKendoGrid().saveAsPDF().done(function () {
+                    $("#kendo-export-div").addClass("hide");
+                    //$("#grid-supplier-scorebyKPI .k-i-collapse").trigger("click");
+                    $("#btnPdfKPIExport").find(".fa").addClass("hide");
+                });
+            });
+        }
+    });
+</script>

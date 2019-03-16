@@ -1,0 +1,49 @@
+﻿@using CEB.CustomControls.MvcControls;
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+    <div class="col-md-7 loginLeftCont">
+        <h1 class="padding-top-20">Welcome</h1>
+        <p>
+            Merlin is an automated supplier scorecard platform that allows you to easily collect, aggregate, and analyze performance data for your most critical suppliers.
+        </p>
+    </div>
+    <div class="col-md-offset-1 col-md-4 loginRightCont">
+        <div class="main" id="sbws-login-view">
+            @*<form action="http://localhost/Ceb.MerlinTool/SBWSAuth/Login" id="formSBWSLogin" method="post">
+                    <div class="header" id="divLoginHeading">Sign In<br><br></div>
+                    <div id="divLoginBox">
+                        <span class="username-label">Username</span><br>
+                        <input class="username-textbox" id="username" name="username" type="text"><br><br>
+                        <span class="password-label">Password</span><br>
+                        <input class="password-textbox" id="password" name="password" type="password"><br><br>
+                        <input class="login-button" id="login" type="submit" value="Log in">
+                        <input name="redirectAction" type="hidden" value="Login">
+                        <input name="redirectController" type="hidden" value="Account"><br><br>
+                        <div style="color: red"></div>
+                    </div>
+                </form>*@
+
+            <i class="glyphicon glyphicon-user"></i>
+            @(Html.SBWSLoginControl("Sign In"))
+
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            localStorage.clear();
+            $("#username").focus();
+        });
+        $("#login").click(function () {
+            $("#password").blur();
+            $("#page-spinner").show();
+        });
+
+    </script>
+
+

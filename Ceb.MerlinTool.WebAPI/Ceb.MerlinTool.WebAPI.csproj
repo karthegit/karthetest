@@ -1,0 +1,326 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8B9E71A2-E450-4D84-B706-B5E29B46C19D}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Ceb.MerlinTool.WebAPI</RootNamespace>
+    <AssemblyName>Ceb.MerlinTool.WebAPI</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Aspose.Cells">
+      <HintPath>..\Libraries\Aspose.Cells.dll</HintPath>
+    </Reference>
+    <Reference Include="Aspose.Pdf">
+      <HintPath>..\..\..\..\..\..\..\Users\kanburaj\Desktop\Temp\Aspose\Aspose.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="Aspose.Slides">
+      <HintPath>..\..\..\..\..\..\..\Users\kanburaj\Desktop\Temp\Aspose\Aspose.Slides.dll</HintPath>
+    </Reference>
+    <Reference Include="CEB.CustomControls">
+      <HintPath>..\Libraries\CEB.CustomControls.dll</HintPath>
+    </Reference>
+    <Reference Include="Ceb.Logger">
+      <HintPath>..\Libraries\Ceb.Logger.dll</HintPath>
+    </Reference>
+    <Reference Include="Ceb.MerlinTool.DataAccess">
+      <HintPath>..\Ceb.MerlinTool.DataAccess\bin\Debug\Ceb.MerlinTool.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="CebLibrary.CebCookieEngine">
+      <HintPath>..\Libraries\CebLibrary.CebCookieEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="CebLibrary.EncryptionLibrary">
+      <HintPath>..\Libraries\CebLibrary.EncryptionLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus">
+      <HintPath>..\Libraries\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\Libraries\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationBlocks.Data, Version=1.0.2685.36321, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\Microsoft.ApplicationBlocks.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration">
+      <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention">
+      <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Unity.WebApi">
+      <HintPath>..\packages\Unity.WebApi.5.1.5.2\lib\net45\Unity.WebApi.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.2\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\phantomjs\data.js" />
+    <Content Include="Scripts\phantomjs\datajs-1.1.2.min.js" />
+    <Content Include="Scripts\phantomjs\drilldown.js" />
+    <Content Include="Scripts\phantomjs\funnel.js" />
+    <Content Include="Scripts\phantomjs\grouped-categories.js" />
+    <Content Include="Scripts\phantomjs\heatmap.js" />
+    <Content Include="Scripts\phantomjs\highcharts-3d.js" />
+    <Content Include="Scripts\phantomjs\highcharts-convert.js" />
+    <Content Include="Scripts\phantomjs\highcharts-more.js" />
+    <Content Include="Scripts\phantomjs\highcharts-regression.js" />
+    <Content Include="Scripts\phantomjs\highcharts.js" />
+    <Content Include="Scripts\phantomjs\highstock.js" />
+    <Content Include="Scripts\phantomjs\img.png" />
+    <Content Include="Scripts\phantomjs\jquery.1.9.1.min.js" />
+    <Content Include="Scripts\phantomjs\jquery.min.js" />
+    <Content Include="Scripts\phantomjs\map.js" />
+    <Content Include="Scripts\phantomjs\no-data-to-display.js" />
+    <Content Include="Scripts\phantomjs\phantomjs.exe" />
+    <Content Include="Scripts\phantomjs\third-party.txt" />
+    <Content Include="Service References\SalesforceServiceReference\Ceb.MerlinTool.WebAPI.SalesforceServiceReference.Institution.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\SalesforceServiceReference\Ceb.MerlinTool.WebAPI.SalesforceServiceReference.Opportunity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\SalesforceServiceReference\Ceb.MerlinTool.WebAPI.SalesforceServiceReference.Practice.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\SalesforceServiceReference\Ceb.MerlinTool.WebAPI.SalesforceServiceReference.Program.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\SalesforceServiceReference\Ceb.MerlinTool.WebAPI.SalesforceServiceReference.SARoles.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\SalesforceServiceReference\Ceb.MerlinTool.WebAPI.SalesforceServiceReference.User.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Properties\PublishProfiles\MerlinWeb.pubxml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Scripts\phantomjs\chart_export.bat" />
+    <Content Include="Scripts\phantomjs\LICENSE.BSD" />
+    <Content Include="Scripts\phantomjs\README.md" />
+    <Content Include="Scripts\phantomjs\solid-gauge.src.js" />
+    <Content Include="Scripts\phantomjs\resources.json" />
+    <None Include="Service References\SalesforceServiceReference\SalesforceWebService.disco" />
+    <None Include="Service References\SalesforceServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\SalesforceServiceReference\configuration.svcinfo" />
+    <None Include="Service References\SalesforceServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Service References\SalesforceServiceReference\SalesforceWebService.wsdl" />
+    <None Include="Service References\SalesforceServiceReference\SalesforceWebService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SalesforceServiceReference\SalesforceWebService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SalesforceServiceReference\SalesforceWebService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SalesforceServiceReference\SalesforceWebService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Constants\MerlinConstants.cs" />
+    <Compile Include="Controllers\APIAdminController.cs" />
+    <Compile Include="Controllers\APICategoryAnalysisController.cs" />
+    <Compile Include="Controllers\APILogController.cs" />
+    <Compile Include="Controllers\APILookupController.cs" />
+    <Compile Include="Controllers\APIMemberProfileController.cs" />
+    <Compile Include="Controllers\APIOverAllController.cs" />
+    <Compile Include="Controllers\APIPerceptionGapsController.cs" />
+    <Compile Include="Controllers\APISupplierAnalysisController.cs" />
+    <Compile Include="Controllers\APITrendAnalysisController.cs" />
+    <Compile Include="Controllers\APIUserController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="ExportHelper\HighChartExportPhantomJS.cs" />
+    <Compile Include="ExportHelper\HighChartsExportHelper.cs" />
+    <Compile Include="Filters\WebApiAuthentication.cs" />
+    <Compile Include="Filters\WebApiException.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\IAdminConfigurations.cs" />
+    <Compile Include="Interfaces\ICategoryAnalysis.cs" />
+    <Compile Include="Interfaces\ILogService.cs" />
+    <Compile Include="Interfaces\ILookup.cs" />
+    <Compile Include="Interfaces\IOverAllScore.cs" />
+    <Compile Include="Interfaces\IPerceptionGaps.cs" />
+    <Compile Include="Interfaces\ISupplierAnalysis.cs" />
+    <Compile Include="Interfaces\ITrendAnalysis.cs" />
+    <Compile Include="Interfaces\IUser.cs" />
+    <Compile Include="IoC\UnityResolver.cs" />
+    <Compile Include="Models\MemberModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Relay\AjaxResponse.cs" />
+    <Compile Include="Service References\SalesforceServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Services\AdminConfigurationsService.cs" />
+    <Compile Include="Services\CategoryAnalysisService.cs" />
+    <Compile Include="Services\LogService.cs" />
+    <Compile Include="Services\LookupService.cs" />
+    <Compile Include="Services\OverallScoreService.cs" />
+    <Compile Include="Services\Relay\Enum\ServiceStatusCode.cs" />
+    <Compile Include="Services\Relay\Response.cs" />
+    <Compile Include="Services\PerceptionGapsService.cs" />
+    <Compile Include="Services\SupplierAnalysisService.cs" />
+    <Compile Include="Services\TrendAnalysisService.cs" />
+    <Compile Include="Services\UserService.cs" />
+    <Compile Include="ExportHelper\ExcelProcessHelper.cs" />
+    <Compile Include="Utility\JSONConverter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Service References\SalesforceServiceReference\SalesforceWebService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Template\ExcelTemplate.xlsx" />
+    <Content Include="Template\Mock chart.xlsx" />
+    <Content Include="Template\ExportTemplate.pptx" />
+    <Content Include="Template\Aspose.Total.lic" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\SalesforceServiceReference\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>35765</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/Ceb.MerlinTool.WebAPI</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://localhost/Ceb.MerlinTool.WebAPI</IISAppRootUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
